@@ -1,21 +1,24 @@
+const Message = require('../repositories/messageRepository');
+
+
 function getAll () {
-    return Promise.resolve('success');
+    return Message.getAll();
 };
 
 function getMessageById (id) {
-    return Promise.resolve('success');
+    return Message.getById(id);
 };
 
 function createMessage (data) {
-    return Promise.resolve('success');
+    return Message.create(data);
 };
 
 function updateMessage (id, data) {
-    return Promise.resolve('success');
+    return Message.update(id, data);
 };
 
 function deleteMessage (id) {
-    return Promise.resolve('success');
+    return Message.delete(id);
 };
 
 module.exports = {

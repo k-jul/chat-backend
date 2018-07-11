@@ -6,24 +6,53 @@ router.get('/', (req, res) => {
         .then((data) => res.status(200).send(data))
         .catch((err) => {
             console.log(err);
-            res.sendStatus(404);
+            res.sendStatus(400);
         })
 });
 
 router.get('/:id', (req, res) => {
-    res.status(200).send('get user by id: ' + req.params.id);
+    return service.getUserById(req.params.id)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
+});
+
+router.get('/:id/friends', (req, res) => {
+    return service.getFriendsByUserId(req.params.id)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
 });
 
 router.post('/', (req, res) => {
-    res.status(200).send('create new user');
+    return service.createNewUser(req.body)
+        .then((data) => res.status(201).send(data))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
 });
 
 router.put('/:id', (req, res) => {
-    res.status(200).send('update user info');
+    return service.updateUserInfo(req.params.id, req.body)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(404);
+        })
 });
 
 router.delete('/:id', (req, res) => {
-    res.status(200).send('delete user');
+    return service.deleteUser(req.params.id)
+        .then((data) => res.sendStatus(200))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
 });
 
 

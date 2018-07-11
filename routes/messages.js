@@ -2,23 +2,49 @@ const router = require('express').Router();
 const service = require('../services/messages');
 
 router.get('/', (req, res) => {
-    res.status(200).send('get all messages');
+    return service.getAll()
+        .then((data) => res.status(200).send(data))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
 });
 
 router.get('/:id', (req, res) => {
-    res.status(200).send('get message by id: ' + req.params.id);
+     return service.getMessageById(req.params.id)
+        .then((data) => res.status(200).send(data))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
 });
 
 router.post('/', (req, res) => {
-    res.status(200).send('create new message');
+    return service.createMessage(req.body)
+    .then((data) => res.status(201).send(data))
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+    })
 });
 
 router.put('/:id', (req, res) => {
-    res.status(200).send('update message');
+    return service.updateMessage(req.params.id, req.body)
+    .then((data) => res.status(200).send(data))
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(404);
+    })
 });
 
 router.delete('/:id', (req, res) => {
-    res.status(200).send('delete message');
+    return service.deleteMessage(req.params.id)
+        .then((data) => res.sendStatus(200))
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(400);
+        })
 });
+
 
 module.exports = router;
