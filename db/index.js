@@ -1,20 +1,3 @@
-// const mongoose = require('mongoose');
-// mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://localhost/api');
-
-// const db = mongoose.connection;
-
-// db.on('error', console.error);
-// db.once('open', () => {
-//     console.log('connection successful');
-// });
-
-// module.exports = {
-//     mongoose,
-//     users: require('./schemas/users'),
-//     messages: require('./schemas/messages')
-// };
-
 function dbConnectionHandler() {
     const mongoose = require("mongoose");
     mongoose.connect('mongodb://localhost/api', {
