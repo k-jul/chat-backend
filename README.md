@@ -6,7 +6,7 @@
  * ```npm install```
  
  #### Import database:
- * ```mongorestore ./dump/api```
+ * ```mongorestore ./dump/api --db api```
 
  #### Run:
  * ```npm start```
