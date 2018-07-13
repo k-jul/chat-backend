@@ -27,6 +27,6 @@
  add new message | POST | /messages
  update message | PUT | /messages/:messageId
  delete message | DELETE | /messages/:messageId
- get user's friends by user id | GET | /users/:id/friends
+ get user's friends by user id | GET | /users/:userId/friends
  
  
